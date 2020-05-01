@@ -3,15 +3,15 @@ defmodule ChirpWeb.BoxesLive do
   use ChirpWeb, :live_view
 
   def mount(_params, _session, socket) do
-    if connected?(socket), do: queue_animate(socket)
+    if connected?(socket), do: queue_animate()
 
     {:ok, assign(socket, time: 0, boxes: boxes(0))}
   end
 
-  def queue_animate(socket), do: Process.send_after(self(), :animate, trunc(1000 / 60))
+  def queue_animate, do: Process.send_after(self(), :animate, trunc(1000 / 60))
 
   def handle_info(:animate, socket) do
-    queue_animate(socket)
+    queue_animate()
     next_time = Map.get(socket.assigns, :time, 0) + 1
 
     {:noreply, assign(socket, time: next_time, boxes: boxes(next_time))}

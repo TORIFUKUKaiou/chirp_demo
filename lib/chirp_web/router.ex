@@ -25,6 +25,8 @@ defmodule ChirpWeb.Router do
 
     live "/posts/:id", PostLive.Show, :show
     live "/posts/:id/show/edit", PostLive.Show, :edit
+
+    live "/boxes", BoxesLive, :index
   end
 
   # Other scopes may use custom stacks.

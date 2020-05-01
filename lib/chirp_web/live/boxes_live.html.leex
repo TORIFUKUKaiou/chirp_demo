@@ -1,0 +1,9 @@
+<%= for box <- @boxes do %>
+  <div style="transform: translateX( <%= box.translate_x %>% ) translateY( <%= box.translate_y %>% ) rotate( <%= box.rotation %>deg ); left: <%= box.x %>%; top: <%= box.y %>%; position: absolute; background-color: blue; width: 50px; height: 50px;">
+  </div>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+time: <%= @time %>

@@ -8,7 +8,7 @@ defmodule ChirpWeb.BoxesLive do
     {:ok, assign(socket, time: 0, boxes: boxes(0))}
   end
 
-  def queue_animate, do: Process.send_after(self(), :animate, trunc(1000 / 60))
+  def queue_animate, do: Process.send_after(self(), :animate, 0)
 
   def handle_info(:animate, socket) do
     queue_animate()

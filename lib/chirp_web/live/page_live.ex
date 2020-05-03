@@ -3,7 +3,16 @@ defmodule ChirpWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+    if info = get_connect_info(socket) do
+      ip =
+        info.peer_data.address
+        |> Tuple.to_list()
+        |> Enum.join(if tuple_size(info.peer_data.address) == 4, do: ".", else: ":")
+
+      {:ok, assign(socket, query: "", results: %{}, ip: ip)}
+    else
+      {:ok, assign(socket, query: "", results: %{}, ip: nil)}
+    end
   end
 
   @impl true

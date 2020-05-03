@@ -4,10 +4,13 @@ defmodule ChirpWeb.PageLive do
   @impl true
   def mount(_params, _session, socket) do
     if info = get_connect_info(socket) do
-      IO.inspect info
+      IO.inspect(info)
+
       ip =
         if Enum.count(info.x_headers) > 0 do
-          Enum.find(info.x_headers, {"x-forwarded-for", "127.0.0.1"}, fn {key, _value} -> key == "x-forwarded-for" end)
+          Enum.find(info.x_headers, {"x-forwarded-for", "127.0.0.1"}, fn {key, _value} ->
+            key == "x-forwarded-for"
+          end)
           |> elem(1)
         else
           info.peer_data.address

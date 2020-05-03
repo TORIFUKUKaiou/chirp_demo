@@ -17,13 +17,6 @@ config :chirp, Chirp.Repo,
 # with webpack to recompile .js and .css sources.
 config :chirp, ChirpWeb.Endpoint,
   http: [port: 4000],
-  https: [
-    port: 443,
-    otp_app: :chirp,
-    cipher_suite: :strong,
-    keyfile: "priv/cert/privkey.pem",
-    certfile: "priv/cert/fullchain.pem"
-  ],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,

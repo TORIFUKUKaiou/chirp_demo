@@ -26,6 +26,19 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :kaffy,
+  otp_app: :chirp,
+  ecto_repo: Chirp.Repo,
+  router: ChirpWeb.Router,
+  resources: [
+    timeline: [
+      name: "Timeline",
+      schemas: [
+        post: [schema: Chirp.Timeline.Post]
+      ]
+    ]
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

@@ -1,5 +1,6 @@
 defmodule ChirpWeb.Router do
   use ChirpWeb, :router
+  use Kaffy.Routes, scope: "/admin"
 
   pipeline :browser do
     plug :accepts, ["html"]
